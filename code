@@ -1,0 +1,10 @@
+##Activate Screen 
+srun -p compute -q batch -N 1 -n 24 --mem 100G -t 24:00:00 --pty bash
+
+
+#Align Fastq to the guide library
+mageck count -l /projects/verhaak-lab/dzhao/crisprscreen/library.csv -n rep2 --sample-label A2,A13  --fastq /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/A2-HeLA-GeCKOscreen-rep2_GT22-06456_ACTTCTTC_S2_R1_001.fastq.gz /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/A13-HeLA-GeCKOscreen-rep2_GT22-06458_TGGTAACG_S1_R1_001.fastq.gz 
+mageck test -k /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/rep2.count.txt -t A2 -c A13 -n rep2
+
+
+
