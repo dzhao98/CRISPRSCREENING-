@@ -8,3 +8,18 @@ mageck test -k /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/rep2.count.tx
 
 
 
+##job Header
+#!/bin/bash
+#SBATCH --job-name=HeLaRep3  # Job name
+#SBATCH --ntasks=1          # Run on a single CPU
+#SBATCH --cpus-per-task=24     # Number of CPU cores per task
+#SBATCH --mem=100G           # Job memory request
+#SBATCH --time=12:00:00        # Time limit hrs:min:sec
+#SBATCH --mail-user=dacheng.zhao@jax.org        #email
+#SBATCH --mail-type=END,FAIL            # email when job is done or failed
+#SBATCH -o slurm.%x.%j.out # STDOUT
+#SBATCH -e slurm.%x.%j.err # STDERR
+mageck count -l /projects/verhaak-lab/dzhao/crisprscreen/library.csv -n rep3 --sample-label A2,A13  --fastq /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/A2-HeLA-GeCKOscreen-rep3_GT22-06457_CCTAGAAT_S4_R1_001.fastq.gz /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/A13-HeLA-GeCKOscreen-rep3_GT22-06459_CATCAGAC_S3_R1_001.fastq.gz 
+mageck test -k /projects/verhaak-lab/dzhao/crisprscreen/Replicate2/rep3.count.txt -t A2 -c A13 -n rep3
+
+
